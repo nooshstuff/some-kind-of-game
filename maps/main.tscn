@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://g5g4q403evy7"]
 
 [ext_resource type="Script" path="res://src/entities/Player.gd" id="1_1jqwl"]
-[ext_resource type="PhysicsMaterial" uid="uid://c4og5ostk42nl" path="res://surfaceprop/Default.tres" id="2_wrqm0"]
+[ext_resource type="PhysicsMaterial" uid="uid://c4og5ostk42nl" path="res://resources/surfaceprop/Default.tres" id="2_futbf"]
 [ext_resource type="Texture2D" uid="uid://dww28c81rq6rf" path="res://assets/textures/terrain/maximal intelligence.png" id="3_o125r"]
 [ext_resource type="PackedScene" uid="uid://dugfm4v0chdbg" path="res://src/entities/ActorBody.tscn" id="4_2pg3l"]
 [ext_resource type="Texture2D" uid="uid://qtp2v18ys465" path="res://assets/textures/animated/coolpunk/frame01.png" id="5_lrrmn"]
@@ -80,7 +80,7 @@ script = ExtResource("1_1jqwl")
 actor = NodePath("../PlayerActor")
 
 [node name="Ground" type="StaticBody3D" parent="."]
-physics_material_override = ExtResource("2_wrqm0")
+physics_material_override = ExtResource("2_futbf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_jie2v")
