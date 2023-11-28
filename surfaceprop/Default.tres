@@ -1,0 +1,22 @@
+[gd_resource type="PhysicsMaterial" script_class="SurfaceMaterial" load_steps=3 format=3 uid="uid://c4og5ostk42nl"]
+
+[ext_resource type="Script" path="res://src/resource/SurfaceData.gd" id="1_x3by6"]
+[ext_resource type="Resource" uid="uid://b1dellw6rgqmg" path="res://surfaceprop/sounds/DefaultSet.tres" id="2_erveo"]
+
+[resource]
+friction = 0.8
+bounce = 0.25
+script = ExtResource("1_x3by6")
+density = 2000.0
+dampening = 0.0
+reflectivity = 0.66
+hardness_factor = 1.0
+roughness_factor = 1.0
+rough_threshold = 0.5
+hard_threshold = 0.5
+hard_vel_threshold = 0.0
+sounds = ExtResource("2_erveo")
+max_speed_factor = 1.0
+jump_factor = 1.0
+material = &"CONCRETE"
+climbable = false

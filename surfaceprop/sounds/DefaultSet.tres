@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="SurfaceSounds" load_steps=2 format=3 uid="uid://b1dellw6rgqmg"]
+
+[ext_resource type="Script" path="res://src/resource/SurfaceSounds.gd" id="1_3cbit"]
+
+[resource]
+script = ExtResource("1_3cbit")

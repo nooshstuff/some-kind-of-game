@@ -1,0 +1,127 @@
+[gd_scene load_steps=28 format=3 uid="uid://g5g4q403evy7"]
+
+[ext_resource type="Script" path="res://src/entities/Player.gd" id="1_1jqwl"]
+[ext_resource type="PhysicsMaterial" uid="uid://c4og5ostk42nl" path="res://surfaceprop/Default.tres" id="2_wrqm0"]
+[ext_resource type="Texture2D" uid="uid://dww28c81rq6rf" path="res://assets/textures/terrain/maximal intelligence.png" id="3_o125r"]
+[ext_resource type="PackedScene" uid="uid://dugfm4v0chdbg" path="res://src/entities/ActorBody.tscn" id="4_2pg3l"]
+[ext_resource type="Texture2D" uid="uid://qtp2v18ys465" path="res://assets/textures/animated/coolpunk/frame01.png" id="5_lrrmn"]
+[ext_resource type="Texture2D" uid="uid://f7qe7ndfsqal" path="res://assets/textures/animated/coolpunk/frame02.png" id="6_05p2r"]
+[ext_resource type="Texture2D" uid="uid://degdyy38df116" path="res://assets/textures/animated/coolpunk/frame03.png" id="7_ej1rt"]
+[ext_resource type="Texture2D" uid="uid://xm0brbfqrur0" path="res://assets/textures/animated/coolpunk/frame04.png" id="8_2oymv"]
+[ext_resource type="Texture2D" uid="uid://cuyokc545vwsr" path="res://assets/textures/animated/coolpunk/frame05.png" id="9_2ekhk"]
+[ext_resource type="Texture2D" uid="uid://bvrujv117qygw" path="res://assets/textures/animated/coolpunk/frame06.png" id="10_smmbd"]
+[ext_resource type="Texture2D" uid="uid://cwwkg5dcil0ks" path="res://assets/textures/animated/coolpunk/frame07.png" id="11_nikq8"]
+[ext_resource type="Texture2D" uid="uid://kf41nnrxykl3" path="res://assets/textures/animated/coolpunk/frame08.png" id="12_rbwam"]
+[ext_resource type="Texture2D" uid="uid://cih6wmikp1vfn" path="res://assets/textures/animated/coolpunk/frame09.png" id="13_mcpls"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="14_by1gn"]
+[ext_resource type="Resource" path="res://resources/hterrain/test_terrain/data.hterrain" id="15_mtyd5"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="16_30avs"]
+[ext_resource type="Texture2D" uid="uid://b5hlqfdnj6ox8" path="res://assets/textures/terrain/main_slot0_albedo_bump.png" id="17_nt278"]
+[ext_resource type="Texture2D" uid="uid://cmbn5g2qkf0v1" path="res://assets/textures/terrain/main_slot1_albedo_bump.png" id="18_8b7yc"]
+[ext_resource type="Texture2D" uid="uid://de1373vbpnhus" path="res://assets/textures/terrain/main_slot2_albedo_bump.png" id="19_a21ab"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jie2v"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6gbj"]
+albedo_texture = ExtResource("3_o125r")
+uv1_scale = Vector3(4, 4, 4)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_unsnk"]
+material = SubResource("StandardMaterial3D_y6gbj")
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gmbr3"]
+size = Vector3(6, 3, 1)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ixwes"]
+frames = 9
+frame_0/texture = ExtResource("5_lrrmn")
+frame_0/duration = 0.01
+frame_1/texture = ExtResource("6_05p2r")
+frame_1/duration = 0.01
+frame_2/texture = ExtResource("7_ej1rt")
+frame_2/duration = 0.01
+frame_3/texture = ExtResource("8_2oymv")
+frame_3/duration = 0.01
+frame_4/texture = ExtResource("9_2ekhk")
+frame_4/duration = 0.01
+frame_5/texture = ExtResource("10_smmbd")
+frame_5/duration = 0.01
+frame_6/texture = ExtResource("11_nikq8")
+frame_6/duration = 0.01
+frame_7/texture = ExtResource("12_rbwam")
+frame_7/duration = 0.01
+frame_8/texture = ExtResource("13_mcpls")
+frame_8/duration = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlbqy"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 2
+alpha_antialiasing_edge = 0.0
+albedo_texture = SubResource("AnimatedTexture_ixwes")
+uv1_scale = Vector3(2.902, 2.055, 2.902)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fbhsg"]
+material = SubResource("StandardMaterial3D_jlbqy")
+size = Vector3(6, 3, 1)
+
+[sub_resource type="Resource" id="Resource_c7rro"]
+script = ExtResource("16_30avs")
+mode = 0
+textures = [[ExtResource("17_nt278"), ExtResource("18_8b7yc"), ExtResource("19_a21ab")], [null, null, null]]
+
+[node name="MAIN" type="Node"]
+
+[node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("1_1jqwl")
+actor = NodePath("../PlayerActor")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+physics_material_override = ExtResource("2_wrqm0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_jie2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_unsnk")
+
+[node name="MainLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.173648, 0.564863, -0.806707, 0, 0.819152, 0.573577, 0.984808, -0.0996004, 0.142244, 0, 42.8612, 0)
+shadow_enabled = true
+
+[node name="PlayerActor" parent="." instance=ExtResource("4_2pg3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87566, 0)
+
+[node name="Veeyoow" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.41645, 2.51806, -7.02227)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Veeyoow"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, 0)
+shape = SubResource("BoxShape3D_gmbr3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Veeyoow"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, 0)
+mesh = SubResource("BoxMesh_fbhsg")
+
+[node name="HTerrain" type="Node3D" parent="."]
+script = ExtResource("14_by1gn")
+centered = true
+_terrain_data = ExtResource("15_mtyd5")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_c7rro")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+shader_params/u_tile_reduction = Vector4(0, 0, 0, 0)
+shader_params/u_specular = 0.5
