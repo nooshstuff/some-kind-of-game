@@ -14,13 +14,9 @@ var weaponsubtype:int = 0;
 var mousedx:int = 0;
 var mousedy:int = 0;
 
-### MOVE DATA
 var last_buttons:Dictionary = {}
-var global_viewangle:Vector3 = Vector3.ZERO
-var local_viewangle:Vector3 = Vector3.ZERO
 
-## gameplay_inert = true if you only want to affect gameplay values
-func reset(gameplay_inert:bool = false):
+func reset(gameplay_inert:bool = false):	## gameplay_inert = true if you only want to affect gameplay values
 	forwardmove = 0.0
 	sidemove = 0.0
 	upmove = 0.0
