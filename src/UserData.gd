@@ -1,4 +1,5 @@
 class_name UserData
+extends RefCounted
 
 ### USERCMD
 var forwardmove:float = 0.0:
@@ -29,8 +30,6 @@ func reset(gameplay_inert:bool = false):	## gameplay_inert = true if you only wa
 		mousedy = 0
 
 func check():
-	last_buttons = buttons.duplicate()
-
 	buttons["jump"] = Input.is_action_pressed("move_jump")
 	buttons["jump_pressed"] = Input.is_action_just_pressed("move_jump")
 	buttons["jump_released"] = Input.is_action_just_released("move_jump")
