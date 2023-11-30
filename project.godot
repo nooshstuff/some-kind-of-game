@@ -88,6 +88,8 @@ move_jump={
 
 [physics]
 
+common/physics_ticks_per_second=20
+common/max_physics_steps_per_frame=4
 3d/default_gravity=11.43
 
 [xr]

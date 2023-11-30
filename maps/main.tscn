@@ -93,7 +93,7 @@ transform = Transform3D(0.173648, 0.564863, -0.806707, 0, 0.819152, 0.573577, 0.
 shadow_enabled = true
 
 [node name="PlayerActor" parent="." instance=ExtResource("4_2pg3l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87566, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.96256, 0)
 
 [node name="Veeyoow" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.41645, 2.51806, -7.02227)

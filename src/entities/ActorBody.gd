@@ -1305,9 +1305,11 @@ func _integrate_forces(state: PhysicsDirectBodyState3D):
 	#if (move_parent):
 	#	pass # TODO ???
 	#var rot = Quaternion().from_euler(move_angles) * state.transform.basis.get_rotation_quaternion()
+	state.transform.origin = new_phys_pos
 	state.linear_velocity = new_phys_vel
-	var facing:Vector3 = Vector3(move_angles.dot(-self.global_transform.basis.z), move_angles.dot(self.global_transform.basis.y.cross(-self.global_transform.basis.z)), 0.0).normalized()
-	state.transform.basis = Basis.IDENTITY.rotated(Vector3.UP, Vector3.UP.angle_to(facing))
+	
+	#var facing:Vector3 = Vector3(move_angles.dot(-self.global_transform.basis.z), move_angles.dot(self.global_transform.basis.y.cross(-self.global_transform.basis.z)), 0.0).normalized()
+	#state.transform.basis = Basis.IDENTITY.rotated(Vector3.UP, Vector3.UP.angle_to(facing))
 
 func physics_shadow_update():
 	pass
