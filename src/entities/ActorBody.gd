@@ -100,14 +100,14 @@ var water_jump_vel:Vector3 = Vector3.ZERO # m_vecWaterJumpVel
 
 enum MOVETYPE {
 	NONE		= 0,	# never moves
-	WALK,				# Player only - moving on the ground
+	WALK		= 1,		# Player only - moving on the ground
 	#STEP,				# gravity, special edge handling -- monsters use this
 	#FLY,				# No gravity, but still collides with stuff
 	#FLYGRAVITY,		# flies through the air + is affected by gravity
 	#VPHYSICS,			# uses VPHYSICS for simulation
 	#PUSH,				# no clip to world, push and crush
 	#NOCLIP,			# No gravity, no collisions, still do velocity/avelocity
-	LADDER,			# Used by players only when going onto a ladder
+	LADDER		= 2,	# Used by players only when going onto a ladder
 	#OBSERVER,			# Observer movement, depends on player's observer mode
 	#CUSTOM,			# Allows the entity to describe its own physics
 	# should always be defined as the last item in the list
@@ -1305,7 +1305,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D):
 	#if (move_parent):
 	#	pass # TODO ???
 	#var rot = Quaternion().from_euler(move_angles) * state.transform.basis.get_rotation_quaternion()
-	state.transform.origin = new_phys_pos
+	#state.transform.origin = new_phys_pos
 	state.linear_velocity = new_phys_vel
 	
 	#var facing:Vector3 = Vector3(move_angles.dot(-self.global_transform.basis.z), move_angles.dot(self.global_transform.basis.y.cross(-self.global_transform.basis.z)), 0.0).normalized()
